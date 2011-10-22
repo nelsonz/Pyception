@@ -68,7 +68,7 @@
 		var i = 0;
 	  for (var name in current['classes']) {
 			
-          var newX = (i - count / 2) * 600 / count + x + 150;
+          var newX = (i - count / 2) * 600 + x + 150;
 			i += 1;
           var newY = Math.floor(Math.random()*50) + y - 100;
           var tit = new String();
@@ -101,7 +101,7 @@
       if (current.hasOwnProperty('functions')) {
 		var i = 0;
         for (var name in current['functions']) {
-          var newX = (i - count / 2) * 600 / count + x + 150;
+          var newX = (i - count / 2) * 600 + x + 150;
 			i += 1;
           var newY = Math.floor(Math.random()*50) + y - 100;
           var tit = new String();
@@ -133,7 +133,7 @@
       if (current.hasOwnProperty('variables')) {
 		var i = 0;
         for (var name in current['variables']) {
-          var newX = (i - count / 2) * 600 / count + x + 100;
+          var newX = (i - count / 2) * 600 + x + 50;
 			i += 1;
           var newY = Math.floor(Math.random()*50) - 100 + y;
           var tit = new String();
@@ -241,9 +241,9 @@
           all = dic['parsed'];
           id = dic['ID'];
       
-          draw(all.classes, 'classFruit', 230, -Math.floor(Math.random()*50) + 175);
-          draw(all.variables, 'varFruit', 230, -Math.floor(Math.random()*50) + 375);
-          draw(all.functions, 'methodFruit', 230, -Math.floor(Math.random()*50) + 315);
+          draw(all.classes, 'classFruit', 200, -Math.floor(Math.random()*50) + 175);
+          draw(all.variables, 'varFruit', 200, -Math.floor(Math.random()*50) + 375);
+          draw(all.functions, 'methodFruit', 200, -Math.floor(Math.random()*50) + 315);
           
           snippet = ace.edit("snippet");
           var PythonMode = require("ace/mode/python").Mode;
@@ -268,9 +268,9 @@
           $('#growsOnTrees').empty();
           $('#share').empty();
           
-          draw(all.classes, 'classFruit', 230, -Math.floor(Math.random()*50) + 175);
-          draw(all.variables, 'varFruit', 230, -Math.floor(Math.random()*50) + 375);
-          draw(all.functions, 'methodFruit', 230, -Math.floor(Math.random()*50) + 315);
+          draw(all.classes, 'classFruit', 200, -Math.floor(Math.random()*50) + 175);
+          draw(all.variables, 'varFruit', 200, -Math.floor(Math.random()*50) + 375);
+          draw(all.functions, 'methodFruit', 200, -Math.floor(Math.random()*50) + 315);
           $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
         });
       });
@@ -304,7 +304,7 @@
   <div id="editor"></div>
   </div>
   <center><button class="bigBlack" id="smallify">Treeify Me!</button><br><span class="parseError"></span></center>
-  
+  <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo urlencode(get_permalink($post->ID)); ?>&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;"></iframe>
   </div>
 
   
@@ -323,7 +323,7 @@
   <div id="containsSnippet">
   <div id="snippet"></div>
   </div><br>
-  <button class="bigBlack" id="updateThisCrap">Treeify Me!</button>
+  <button class="bigBlack" id="updateThisCrap">Treeify Me!</button><button class="bigBlack" href="http://www.facebook.com/share.php?u=thispage">Share</button>
   <br><span class="parseError"></span>
   <div id="share">
   </div>
