@@ -20,7 +20,7 @@
       for (var name in types) {
         count += 1;
       }
-	  _x = _x - (count * 150);
+	  _x = _x - (count / 2 * 100);
       for (var name in types) {
         var alttext = types[name]['doc'];
 		_x += 100;
@@ -133,7 +133,7 @@
       if (current.hasOwnProperty('variables')) {
 		var i = 0;
         for (var name in current['variables']) {
-          var newX = (i - count / 2) * 600 / count + x + 150;
+          var newX = (i - count / 2) * 600 / count + x + 100;
 			i += 1;
           var newY = Math.floor(Math.random()*50) - 100 + y;
           var tit = new String();
@@ -241,9 +241,9 @@
           all = dic['parsed'];
           id = dic['ID'];
       
-          draw(all.classes, 'classFruit', 270, -Math.floor(Math.random()*50) + 175);
-          draw(all.variables, 'varFruit', 270, -Math.floor(Math.random()*50) + 375);
-          draw(all.functions, 'methodFruit', 270, -Math.floor(Math.random()*50) + 315);
+          draw(all.classes, 'classFruit', 230, -Math.floor(Math.random()*50) + 175);
+          draw(all.variables, 'varFruit', 230, -Math.floor(Math.random()*50) + 375);
+          draw(all.functions, 'methodFruit', 230, -Math.floor(Math.random()*50) + 315);
           
           snippet = ace.edit("snippet");
           var PythonMode = require("ace/mode/python").Mode;
@@ -268,9 +268,9 @@
           $('#growsOnTrees').empty();
           $('#share').empty();
           
-          draw(all.classes, 'classFruit', 270, -Math.floor(Math.random()*50) + 175);
-          draw(all.variables, 'varFruit', 270, -Math.floor(Math.random()*50) + 375);
-          draw(all.functions, 'methodFruit', 270, -Math.floor(Math.random()*50) + 315);
+          draw(all.classes, 'classFruit', 230, -Math.floor(Math.random()*50) + 175);
+          draw(all.variables, 'varFruit', 230, -Math.floor(Math.random()*50) + 375);
+          draw(all.functions, 'methodFruit', 230, -Math.floor(Math.random()*50) + 315);
           $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
         });
       });
