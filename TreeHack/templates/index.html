@@ -68,7 +68,7 @@
 		var i = 0;
 	  for (var name in current['classes']) {
 			
-          var newX = (i - count / 2) * 600 + x + 150;
+          var newX = (i - count / 2) * 100 + x;
 			i += 1;
           var newY = Math.floor(Math.random()*50) + y - 100;
           var tit = new String();
@@ -101,7 +101,7 @@
       if (current.hasOwnProperty('functions')) {
 		var i = 0;
         for (var name in current['functions']) {
-          var newX = (i - count / 2) * 600 + x + 150;
+          var newX = (i - count / 2) * 100 + x;
 			i += 1;
           var newY = Math.floor(Math.random()*50) + y - 100;
           var tit = new String();
@@ -133,7 +133,7 @@
       if (current.hasOwnProperty('variables')) {
 		var i = 0;
         for (var name in current['variables']) {
-          var newX = (i - count / 2) * 600 + x + 50;
+          var newX = (i - count / 2) * 100 + x;
 			i += 1;
           var newY = Math.floor(Math.random()*50) - 100 + y;
           var tit = new String();
@@ -323,7 +323,7 @@
   <div id="containsSnippet">
   <div id="snippet"></div>
   </div><br>
-  <button class="bigBlack" id="updateThisCrap">Treeify Me!</button><button class="bigBlack" href="http://www.facebook.com/share.php?u=thispage">Share</button>
+  <button class="bigBlack" id="updateThisCrap">Treeify Me!</button>
   <br><span class="parseError"></span>
   <div id="share">
   </div>

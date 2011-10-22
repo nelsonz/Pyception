@@ -74,10 +74,15 @@ a {
   color: #fff;
 }
 
-#updateThisCrap, #smallify {
+#updateThisCrap, #smallify, #share {
   height: 50px;
   line-height: 20px;
   border: 0px;
+  margin: 5px;
+}
+
+#noborder {
+  border = 0px;
 }
 
 #semiRelevantInfo {
