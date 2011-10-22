@@ -1,0 +1,194 @@
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{font-size:100%;}
+a {outline: none;} /* Gets rid of Firefox's dotted borders */
+a img {border: none;} /* Gets rid of IE's blue borders */
+
+/* Title fonts */
+@font-face {
+  font-family: 'Amatic SC';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Amatic SC Regular'), local('AmaticSC-Regular'), url('http://themes.googleusercontent.com/static/fonts/amaticsc/v2/DPPfSFKxRTXvae2bKDzp5LO3LdcAZYWl9Si6vvxL-qU.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Terminal Dosis';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Terminal Dosis Light'), local('TerminalDosis-Light'), url('http://themes.googleusercontent.com/static/fonts/terminaldosis/v3/SwfduKDlxm7-vFPpKzhxuT5PQgzoYN-sSquJZXzph5w.woff') format('woff');
+}
+
+html, body {
+  font-family: 'Terminal Dosis', arial;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+#eighteenAndUnderBar {
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px dashed #000;
+  top: 10px;
+  z-index: 100;
+  color: #000;
+}
+
+#eighteenAndUnderBar a {
+  margin: 20px;
+  color: #000;
+  line-height: 50px;
+  width: 100%;
+  left: 0px;
+  text-decoration: none;
+}
+
+#title {
+  text-transform: uppercase;
+  font-family: 'Amatic SC', cursive;
+  font-size: 150px;
+  text-align: center;
+  color: #000;
+  line-height: 150px;
+  padding: 10px;
+  margin: 0 auto;
+  width: 500px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#showForm {
+  margin-top: 20px;
+  opacity: 0;
+}
+
+.bigBlack {
+  cursor: pointer;
+  background-color: #000;
+  padding: 10px;
+  line-height: 80px;
+  text-transform: uppercase;
+  font-family: 'Amatic SC', cursive;
+  color: #fff;
+}
+
+#updateThisCrap, #smallify {
+  height: 50px;
+  line-height: 20px;
+  border: 0px;
+}
+
+#semiRelevantInfo {
+  text-align: center;
+}
+
+#contentButNotHappy {
+  margin: 0 auto;
+  width: 500px;
+  padding-bottom: 100px;
+}
+
+#contentAndNotSad, #contentAndNotHuan {
+  text-align: center;
+  padding-bottom: 100px;
+  width: 1120px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+#contentAndNotSad {
+  display: none;
+}
+
+.left {
+  float: left;
+}
+
+#editor, #containsCodeEditor {
+  width: 500px;
+  height: 0px;
+  line-height: 30px;
+}
+
+#treeOnMyPage {
+  opacity: 0.2;
+  z-index: 1;
+  margin-top:50px;
+}
+
+.varFruit, .methodFruit, .classFruit {
+  background-color: #cb0030;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 15px;
+  min-height: 15px;
+  min-width: 15px;
+  border-radius: 25px;
+  color: #fff;
+  padding: 10px;
+  position: absolute;
+  opacity: .6;
+}
+
+.varFruit {
+  background-color: #7f7648;
+}
+
+.methodFruit {
+  background-color: #67ad4b;
+}
+
+#temp {
+  top: 50px;
+  left: 200px;
+  border-radius: 25px;
+}
+
+#share {
+  margin-top: 20px;
+  line-height: 18px;
+  font-size: 18px;
+}
+
+#snippet, #containsSnippet {
+  width: 500px;
+  height: 500px;
+  line-height: 30px;
+}
+
+#containsSnippet {
+  text-align: left;
+}
+
+.right {
+  float: right;
+}
+
+#othahContainer {
+  float: right;
+  width: 500px;
+  position: relative;
+  text-align: center;
+}
+
+#michelleIsContent {
+  width: 500px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+#sunSunSun {
+  background-color: #ffd503;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 500px;
+  top: 10px;
+  border-radius: 100px;
+}

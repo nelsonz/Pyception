@@ -1,0 +1,263 @@
+ <!DOCTYPE HTML> 
+<html lang="en"> 
+<head> 
+<title>Pyception</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta http-equiv="Content-Language" content="en-us"> 
+
+<link href="http://3wt.us/TreeHack/assets/html.css" rel="stylesheet" type="text/css"> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
+<script type="text/javascript" src="http://3wt.us/TreeHack/assets/jquery.color.js"></script>
+<script src="http://3wt.us/TreeHack/assets/oooFancy.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="http://3wt.us/TreeHack/assets/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://3wt.us/TreeHack/assets/mode-python.js" type="text/javascript" charset="utf-8"></script>
+
+<meta property="og:title" content="Pyception" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="Pyception" />
+<meta property="fb:admins" content="1295520723" />
+
+<script>
+$(window).load( function() {
+    draw = function(types, div, _x, _y) {
+      var count = 0;
+      for (var name in types) {
+        count += 1;
+      }
+	  _x = _x - (count * 150);
+      for (var name in types) {
+        var alttext = types[name]['doc'];
+		_x += 100;
+			
+        var tit = new String();
+        
+        if (types[name].hasOwnProperty('doc')) {
+          tit = types[name]['doc'];
+        }
+        
+        console.log(tit);
+        
+        types[name]['el'] =  $("<div></div>").text(name).data('info', {name: name, x: _x + 15, y: _y + 15, fruit: types[name]}).addClass(div).attr('title',tit).css({left: _x, top: _y}).toggle(function(){
+          var data = $(this).data('info');
+           if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+         expand(data.fruit, data.x, data.y);
+        }, function(){
+          var data = $(this).data('info');
+          if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+          removeChildren(data.fruit);
+        }).appendTo("#growsOnTrees");
+      }
+      $('#growsOnTrees div').hover(function() {
+        $('#growsOnTrees div').stop().animate({'opacity': '.2'});
+        $(this).stop().animate({'opacity': '1'});
+      }, function() {
+        $('#growsOnTrees div').stop().animate({'opacity': '.6'});
+      });
+	  return _y;
+    }
+    
+    expand = function(current, x, y) {
+      var count = 0;
+      for (var key in current) {
+        count += 1;
+      }
+      if (current.hasOwnProperty('classes')) {
+		var i = 0;
+	  for (var name in current['classes']) {
+			
+          var newX = (i - count / 2) * 600 / count + x + 150;
+			i += 1;
+          console.log(newX);
+          var newY = Math.floor(Math.random()*50) + y - 100;
+          var tit = new String();
+        
+          if (current['classes'][name].hasOwnProperty('doc')) {
+            tit = current['classes'][name]['doc'];
+          }
+          
+          current['classes'][name]['el'] =  $("<div></div>").text(name).data('info', {name: name, x: newX, y: newY, fruit: current["classes"][name]}).addClass("classFruit").attr('title',tit).css({left: newX, top: newY}).toggle(function(){
+           var data = $(this).data('info');
+          if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+           expand(data.fruit, data.x, data.y);
+          }, function(){
+            var data = $(this).data('info');
+          if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+            removeChildren(data.fruit);
+          }).appendTo("#growsOnTrees");
+        }
+      }
+      
+      if (current.hasOwnProperty('functions')) {
+		var i = 0;
+        for (var name in current['functions']) {
+          var newX = (i - count / 2) * 600 / count + x + 150;
+			i += 1;
+          console.log(newX);
+          var newY = Math.floor(Math.random()*50) + y - 100;
+          var tit = new String();
+        
+          if (current['functions'][name].hasOwnProperty('doc')) {
+            tit = current['functions'][name]['doc'];
+          }
+          
+          current['functions'][name]['el'] =  $("<div></div>").text(name).data('info', {name: name, x: newX, y: newY, fruit: current["functions"][name]}).addClass("methodFruit").attr('title',tit).css({left: newX, top: newY}).toggle(function(){
+            var data = $(this).data('info');
+          if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+            expand(data.fruit, data.x, data.y);
+          }, function(){
+            var data = $(this).data('info');
+          if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+            removeChildren(data.fruit);
+          }).appendTo("#growsOnTrees");
+        }
+      }
+      
+      if (current.hasOwnProperty('variables')) {
+		var i = 0;
+        for (var name in current['variables']) {
+          var newX = (i - count / 2) * 600 / count + x + 150;
+			i += 1;
+          console.log(newX);
+          var newY = Math.floor(Math.random()*50) - 100 + y;
+          var tit = new String();
+        
+          if (current['variables'].hasOwnProperty('doc')) {
+            tit = current['variables']['doc'];
+          }
+          
+          current['variables'][name]['el'] =  $("<div></div>").text(name).data('info', {name: name, x: newX, y: newY, fruit: current["variables"][name]}).addClass("varFruit").css({left: newX, top: newY}).toggle(function(){
+            var data = $(this).data('info');
+          if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+            expand(data.fruit, data.x, data.y);
+          }, function(){
+            var data = $(this).data('info');
+          if ( event.altKey ) {
+             snippet.gotoLine( data.fruit.lineno);
+          }
+
+
+            removeChildren(data.fruit);
+          }).appendTo("#growsOnTrees");
+          
+        }
+      }
+      $('#growsOnTrees div').hover(function() {
+        $('#growsOnTrees div').stop().animate({'opacity': '.2'});
+        $(this).stop().animate({'opacity': '1'});
+      }, function() {
+        $('#growsOnTrees div').stop().animate({'opacity': '.6'});
+      });
+    }
+    
+    removeChildren = function(current) {
+      for(var key in current.classes) {
+        removeChildren(current.classes[key]);
+        if(current.classes[key].el) {
+          current.classes[key].el.remove();
+        }
+      }
+      for(var key in current.functions) {
+        removeChildren(current.functions[key]);
+        if(current.functions[key].el) {
+          current.functions[key].el.remove();
+        }
+      }
+      for(var key in current.variables) {
+        removeChildren(current.variables[key]);
+        if(current.variables[key].el) {
+          current.variables[key].el.remove();
+        }
+      }
+    }
+
+    var lastIndex = window.location.pathname.length - 1;
+    var id = window.location.pathname.substring(1, lastIndex);
+    $.get('../transferCode/', {'ID': id}, function(dic) {
+      code = dic['raw'];
+      all = dic['parsed'];
+      
+      draw(all.classes, 'classFruit', 270, -Math.floor(Math.random()*50) + 175);
+      draw(all.variables, 'varFruit', 270, -Math.floor(Math.random()*50) + 375);
+      draw(all.functions, 'methodFruit', 270, -Math.floor(Math.random()*50) + 315);
+      snippet = ace.edit("snippet");
+      var PythonMode = require("ace/mode/python").Mode;
+      snippet.getSession().setMode(new PythonMode());
+      snippet.getSession().setValue(code);
+      snippet.setReadOnly(true);
+      $('#rightSide').append('<div id="fb-root"></div>');
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+      $('#rightSide').append('<div class="fb-like" data-href="'+window.location.href+'" data-send="true" data-width="450" data-show-faces="true" data-font="verdana"></div>');
+    });
+
+});
+</script>
+</head>
+
+<body>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="eighteenAndUnderBar">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+</div>
+
+<div id="contentAndNotHuan">
+  <div id="treeOnMyPage">
+    <img src="http://3wt.us/TreeHack/assets/tree.png" class="left"> 
+  </div>
+  
+  <div id="growsOnTrees">
+    <!-- dynamically filled -->
+  </div>
+  
+  <div id="othahContainer">
+  alt + click to see which line each element comes from!
+  <div id="containsSnippet" class="right">
+  <div id="snippet"></div>
+  </div></div>
+</div>
+</body>
+
+</html>
