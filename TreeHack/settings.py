@@ -12,7 +12,7 @@ if socket.gethostname() == 'nzhang-laptop':
     MEDIA_ROOT = 'C:/django/TreeHack/assets/'
     STATIC_DOC_ROOT = 'C:/django/TreeHack/assets/'
 else:
-    DEBUG = TEMPLATE_DEBUG = False
+    DEBUG = TEMPLATE_DEBUG = True
 
 #DEBUG = True
 #TEMPLATE_DEBUG = DEBUG
