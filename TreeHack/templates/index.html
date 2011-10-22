@@ -204,15 +204,12 @@
 
 
 
-  $('#smallify').click(function() {
-  try {
+  /*$('#smallify').click(function() {
+
     $.ajax({
         type: 'POST',
-
         url: '/transferCode/',
-
         data: {'code': editor.getSession().getValue()},
-
         success : function(dic) {
           all = dic['parsed'];
           id = dic['ID'];
@@ -220,22 +217,49 @@
           draw(all.classes, 'classFruit', 270, -Math.floor(Math.random()*50) + 175);
           draw(all.variables, 'varFruit', 270, -Math.floor(Math.random()*50) + 375);
           draw(all.functions, 'methodFruit', 270, -Math.floor(Math.random()*50) + 315);
+          
           snippet = ace.edit("snippet");
           var PythonMode = require("ace/mode/python").Mode;
           snippet.getSession().setMode(new PythonMode());
           snippet.getSession().setValue(editor.getSession().getValue());
+          
           $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
           $('#showFrom').animate({ 'opacity' : '0' });
           $('#editor, #containsCodeEditor').css({ 'height' : '0px' });
           $('#contentButNotHappy').fadeToggle('slow');
           $('#contentAndNotSad').fadeToggle('slow');
-          }),
-
+          },
         error: function() {
-          $(".parseError").html( "PARSE ERROR YO" );
+          
+  $(".parseError").html( "PARSE ERROR YO" );
           }
     });
-
+  });*/
+  
+    $('#smallify').click(function() {
+        $.post('/transferCode/', {'code': editor.getSession().getValue()}, function(dic) {
+          all = dic['parsed'];
+          id = dic['ID'];
+      
+          draw(all.classes, 'classFruit', 270, -Math.floor(Math.random()*50) + 175);
+          draw(all.variables, 'varFruit', 270, -Math.floor(Math.random()*50) + 375);
+          draw(all.functions, 'methodFruit', 270, -Math.floor(Math.random()*50) + 315);
+          
+          snippet = ace.edit("snippet");
+          var PythonMode = require("ace/mode/python").Mode;
+          snippet.getSession().setMode(new PythonMode());
+          snippet.getSession().setValue(editor.getSession().getValue());
+          
+          $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
+        });
+        
+        $('#showFrom').animate({ 'opacity' : '0' });
+        $('#editor, #containsCodeEditor').css({ 'height' : '0px' });
+      
+        $('#contentButNotHappy').fadeToggle('slow');
+        $('#contentAndNotSad').fadeToggle('slow');
+      
+      });
       $('#updateThisCrap').click(function() {
         $.post('/transferCode/', {'code': snippet.getSession().getValue()}, function(dic) {
           all = dic['parsed'];
@@ -244,9 +268,9 @@
           $('#growsOnTrees').empty();
           $('#share').empty();
           
-          draw(all.classes, 'classFruit');
-          draw(all.variables, 'varFruit');
-          draw(all.functions, 'methodFruit');
+          draw(all.classes, 'classFruit', 270, -Math.floor(Math.random()*50) + 175);
+          draw(all.variables, 'varFruit', 270, -Math.floor(Math.random()*50) + 375);
+          draw(all.functions, 'methodFruit', 270, -Math.floor(Math.random()*50) + 315);
           $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
         });
       });
@@ -272,14 +296,14 @@
 </a>
     Pyception will grow your beautiful code into a beautiful tree.<br>
     <span id="pushThisButton" class="bigBlack">Try it now</span>
-    <span id="parseError"></span>
+    
   </div>
   <div id="showForm">
   Please type your code below.
   <div id="containsCodeEditor">
   <div id="editor"></div>
   </div>
-  <center><button class="bigBlack" id="smallify">Treeify Me!</button></center>
+  <center><button class="bigBlack" id="smallify">Treeify Me!</button><br><span class="parseError"></span></center>
   
   </div>
 
@@ -300,7 +324,7 @@
   <div id="snippet"></div>
   </div><br>
   <button class="bigBlack" id="updateThisCrap">Treeify Me!</button>
-  
+  <br><span class="parseError"></span>
   <div id="share">
   </div>
   </div>

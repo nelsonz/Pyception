@@ -25,7 +25,7 @@ def ImportFormHack( self, scope ):
     
 def ClassHack( self, scope ):
     classScope = scope[ "classes" ][ self.name ] = { "classes" : {}, "variables" : {}, "functions" : {}, "lineno" : self.lineno, "doc" : ast.get_docstring( self ) }
-    map( lambda node : Hack( node, classScope ), self.body )
+    HackMap( self.body, classScope )
 
 def FunctionDefHack( self, scope ):
     newScope = scope["functions"][ self.name ] = { "lineno": self.lineno, "doc" : ast.get_docstring( self ), "classes" : {}, "functions" : {}, "variables": {} }
@@ -46,7 +46,8 @@ def IfHack( self, scope ):
 
 # VARIABLIZES
 def NameVariablize( self, scope ):
-    scope[ "variables" ][ self.id ] = { "lineno": self.lineno, "classes" : {}, "functions" : {}, "variables" : {} }
+    if self.id != "self":
+        scope[ "variables" ][ self.id ] = { "lineno": self.lineno, "classes" : {}, "functions" : {}, "variables" : {} }
 
 def TupleVariablize( self, scope ):
     for name in self.elts:
@@ -97,8 +98,8 @@ def HACK( text ):
     globals = { "classes" : {}, "variables" : {}, "functions" : {} }
     return ret
 
-'''
+
 if __name__ == '__main__':
     if len( sys.argv ) > 1:
         printStr( HACK( ast.parse( "\n".join( open( sys.argv[-1] ).readlines() ) ) ) )
-'''
+
