@@ -216,6 +216,8 @@ $(window).load( function() {
       snippet.setReadOnly(true);
      
     });
+    
+    $('#shareplace').html('<a href="http://www.facebook.com/share.php?u='+window.location.href+'" id="noborder"><button class="bigBlack" id="share">Share</button></a>');
 
 });
 </script>
@@ -241,7 +243,7 @@ $(window).load( function() {
   alt + click to see which line each element comes from!
   <div id="containsSnippet" class="right">
   <div id="snippet"></div>
-  </div><br><br><a href='http://www.facebook.com/share.php?u='+window.location.pathname+'/', id="noborder"><button class="bigBlack" id="share">Share</button></a><br>
+  </div><br><br><span id="shareplace"></span><br>
   <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo urlencode(get_permalink($post->ID)); ?>&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;"></iframe></div>
 </div>
 </body>
