@@ -235,20 +235,9 @@
           }
     });
   });*/
-  
-    $('#smallify').click(function() {
 
-        $.post('/transferCode/', {'code': editor.getSession().getValue()}, function(dic) {
-          all = dic['parsed'];
-          id = dic['ID'];
-        });
 
-        console.log( all );
-        if ( !( all instanceof Object ) ) {
-           $(".parseError").html( "PARSE ERROR YO" );
-           return;
-        }
-      
+  loadNextThings = function() {
         draw(all.classes, 'classFruit', 200, -Math.floor(Math.random()*50) + 175);
         draw(all.variables, 'varFruit', 200, -Math.floor(Math.random()*50) + 375);
         draw(all.functions, 'methodFruit', 200, -Math.floor(Math.random()*50) + 315);
@@ -266,17 +255,27 @@
         $('#contentButNotHappy').fadeToggle('slow');
         $('#contentAndNotSad').fadeToggle('slow');
       
+  };
+  
+    $('#smallify').click(function() {
+        $.post('/transferCode/', {'code': editor.getSession().getValue()}, function(dic) {
+          all = dic['parsed'];
+          id = dic['ID'];
+          console.log( all );
+          if ( all instanceof Object ) {
+           loadNextThings();
+          } else {
+           $(".parseError").html( "PARSE ERROR YO" );
+          }
+        });
       });
-
 
       $('#updateThisCrap').click(function() {
         $.post('/transferCode/', {'code': snippet.getSession().getValue()}, function(dic) {
           all = dic['parsed'];
           id = dic['ID'];
-          
           $('#growsOnTrees').empty();
           $('#share').empty();
-          
           draw(all.classes, 'classFruit', 200, -Math.floor(Math.random()*50) + 175);
           draw(all.variables, 'varFruit', 200, -Math.floor(Math.random()*50) + 375);
           draw(all.functions, 'methodFruit', 200, -Math.floor(Math.random()*50) + 315);
