@@ -20,7 +20,7 @@ def GiveGetCode(request):
                thiscode.save()
                return HttpResponse(simplejson.dumps({"ID":thiscode.id, "parsed":parsed}), 'application/json')
           
-          if request.method == "GET":
+          elif request.method == "GET":
                thiscode = Code.objects.get(id=request.GET["ID"])
                return HttpResponse(simplejson.dumps({"raw":thiscode.rawcode, "parsed":HACK(thiscode.rawcode)}), 'application/json')
 

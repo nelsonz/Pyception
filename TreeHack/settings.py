@@ -11,8 +11,29 @@ if socket.gethostname() == 'nzhang-laptop':
     DEBUG = TEMPLATE_DEBUG = True
     MEDIA_ROOT = 'C:/django/TreeHack/assets/'
     STATIC_DOC_ROOT = 'C:/django/TreeHack/assets/'
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'treehack.db',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+    
 else:
     DEBUG = TEMPLATE_DEBUG = True
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'postgres://aeduhqcezu',                      # Or path to database file if using sqlite3.
+        'USER': 'aeduhqcezu',                      # Not used with sqlite3.
+        'PASSWORD': 'xrwJ7ijerGxcgED7uVgY',                  # Not used with sqlite3.
+        'HOST': 'ec2-107-20-155-141.compute-1.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
+    }
 
 #DEBUG = True
 #TEMPLATE_DEBUG = DEBUG
@@ -23,16 +44,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'postgres://aeduhqcezu',                      # Or path to database file if using sqlite3.
-        'USER': 'aeduhqcezu',                      # Not used with sqlite3.
-        'PASSWORD': 'xrwJ7ijerGxcgED7uVgY',                  # Not used with sqlite3.
-        'HOST': 'ec2-107-20-155-141.compute-1.amazonaws.com',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

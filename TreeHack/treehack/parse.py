@@ -6,8 +6,6 @@ globals = { "classes" : {}, "variables" : {}, "functions" : {} }
 def Hack( node, scope ):
     if hasattr( node, "Hack" ):
         node.Hack( scope )
-    else:
-        print "AHH NODE", node, "Doesnt have HACK METHOD"
 
 def HackMap( nodes, scope ):
     for node in nodes:
@@ -21,7 +19,7 @@ def ImportHack( self, scope ):
         name.Variablize( scope )
 
 def ImportFormHack( self, scope ):
-    pass # NOT SURE WHAT TO DO..
+    pass
     
 def ClassHack( self, scope ):
     classScope = scope[ "classes" ][ self.name ] = { "classes" : {}, "variables" : {}, "functions" : {}, "lineno" : self.lineno, "doc" : ast.get_docstring( self ) }
