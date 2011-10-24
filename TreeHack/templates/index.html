@@ -241,19 +241,19 @@
         draw(all.classes, 'classFruit', 200, -Math.floor(Math.random()*50) + 175);
         draw(all.variables, 'varFruit', 200, -Math.floor(Math.random()*50) + 375);
         draw(all.functions, 'methodFruit', 200, -Math.floor(Math.random()*50) + 315);
-          
-        snippet = ace.edit("snippet");
-        var PythonMode = require("ace/mode/python").Mode;
-        snippet.getSession().setMode(new PythonMode());
-        snippet.getSession().setValue(editor.getSession().getValue());
-         
-        $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
         
         $('#showFrom').animate({ 'opacity' : '0' });
         $('#editor, #containsCodeEditor').css({ 'height' : '0px' });
       
         $('#contentButNotHappy').fadeToggle('slow');
         $('#contentAndNotSad').fadeToggle('slow');
+          
+        snippet = ace.edit("snippet");
+        var PythonMode = require("ace/mode/python").Mode;
+        snippet.getSession().setMode(new PythonMode());
+        snippet.getSession().setValue(editor.getSession().getValue());
+        
+        $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
       
   };
   
@@ -265,7 +265,7 @@
           if ( all instanceof Object ) {
            loadNextThings();
           } else {
-           $(".parseError").html( "PARSE ERROR YO" );
+           $(".parseError").html( all );
           }
         });
       });
