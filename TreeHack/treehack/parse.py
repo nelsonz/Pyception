@@ -91,7 +91,10 @@ def printStr( d, indent=0 ):
 
 def HACK( text ):
     global globals
-    Hack( ast.parse( text ), globals )
+    try:
+        Hack( ast.parse( text ), globals )
+    except SyntaxError as e:
+        return "Syntax Error " + str( e )
     ret = globals
     globals = { "classes" : {}, "variables" : {}, "functions" : {} }
     return ret
