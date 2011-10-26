@@ -279,7 +279,7 @@
           draw(all.classes, 'classFruit', 200, -Math.floor(Math.random()*50) + 175);
           draw(all.variables, 'varFruit', 200, -Math.floor(Math.random()*50) + 375);
           draw(all.functions, 'methodFruit', 200, -Math.floor(Math.random()*50) + 315);
-          $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
+          $('#share').append('Share your code:<br><textarea>'+window.location.href+id+'</textarea>');
         });
       });
 
@@ -312,7 +312,6 @@
   <div id="editor"></div>
   </div>
   <center><button class="bigBlack" id="smallify">Treeify Me!</button><br><span class="parseError"></span></center>
-  <iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo urlencode(get_permalink($post->ID)); ?>&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;"></iframe>
   </div>
 
   
