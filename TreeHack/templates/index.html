@@ -253,7 +253,7 @@
         snippet.getSession().setMode(new PythonMode());
         snippet.getSession().setValue(editor.getSession().getValue());
         
-        $('#share').append('Share your code:<br><textarea>http://5.80.171.76:8000/'+id+'</textarea>');
+        $('#share').append('Share your code:<br><textarea>'window.location.href+id+'</textarea>');
       
   };
   
